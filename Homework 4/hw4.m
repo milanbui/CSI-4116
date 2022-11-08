@@ -12,16 +12,16 @@
 % top_k = 4;
 
 % egg.jpg example
-im = imread('egg.jpg');
-save_filename = 'egg_circles.png';
-radius = 7;   % radius = 7 works well for egg.jpg
-top_k = 20;   % egg has many small circles. use large top_k
+% im = imread('egg.jpg');
+% save_filename = 'egg_circles.png';
+% radius = 7;   % radius = 7 works well for egg.jpg
+% top_k = 20;   % egg has many small circles. use large top_k
 
 % your image example
-% im = imread('my_image.jpg');
-% save_filename = 'my_image_circles.png';
-% radius = ?;   % you need to find the right radius for your image
-% top_k = ?;   % choose however many circles you want to detect
+im = imread('my_image.jpg');
+save_filename = 'my_image_circles.png';
+radius = 65;   % you need to find the right radius for your image
+top_k = 8;   % choose however many circles you want to detect
 
 edges = detectEdges(im);
 

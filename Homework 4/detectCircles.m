@@ -23,20 +23,22 @@ function [centers] = detectCircles(im, edges, radius, top_k)
         a = edges(row,1) - (radius*cosd(edges(row,4)));
         b = edges(row,2) - (radius*sind(edges(row,4)));
 
-        if (b <= length(im) && b >= 1 && a <= width(im) && a >= 1)
+        if (a <= length(im) && a >= 1 && b <= width(im) && b >= 1)
             aBinIndex = ceil(a/quantization_size);
             bBinIndex = ceil(b/quantization_size);
-            H(bBinIndex, aBinIndex) = H(bBinIndex, aBinIndex) + 1;
+            H(aBinIndex, bBinIndex) = H(aBinIndex, bBinIndex) + 1;
         end
     end
 
     found = 0;
+    centers = zeros(top_k, 2);
     while found < top_k
         [row, col] = find(ismember(H,max(H(:))));
         i = 1;
         
         while found < top_k && i <= length(row)
-            centers = [centers; row(i), col(i)];
+            centers(found+1, 1) = row(i)*quantization_size;
+            centers(found+1, 2) = col(i)*quantization_size;
             i = i+1;
             found = found + 1;
         end
