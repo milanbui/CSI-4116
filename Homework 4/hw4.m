@@ -44,7 +44,7 @@ saveas(gcf, save_filename);
 origImg = imread('fish.jpg');
 
 % Try different k's
-k = 5;
+k = 2;
 [outputImg, meanColors, clusterIds] = quantizeRGB(origImg, k);
 
 close all;  % close existing figures

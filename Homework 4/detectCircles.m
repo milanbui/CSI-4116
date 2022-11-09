@@ -33,7 +33,7 @@ function [centers] = detectCircles(im, edges, radius, top_k)
 
     % Initialize hough space to 0
     grey_im = rgb2gray(im);
-    H = zeros(ceil(length(grey_im)/quantization_size), ceil(width(grey_im)/quantization_size));
+    H = zeros(ceil(height(grey_im)/quantization_size), ceil(width(grey_im)/quantization_size));
 
     % for each edge point
     for row = 1 : size(edges(:,1))
@@ -42,7 +42,7 @@ function [centers] = detectCircles(im, edges, radius, top_k)
         b = edges(row,2) - (radius*sind(edges(row,4)));
 
         % if a and b are within range (within borders of image)
-        if (a <= length(im) && a >= 1 && b <= width(im) && b >= 1)
+        if (a <= height(im) && a >= 1 && b <= width(im) && b >= 1)
 
             % Calculate indeces of a and b in hough space
             aBinIndex = ceil(a/quantization_size);
@@ -67,7 +67,7 @@ function [centers] = detectCircles(im, edges, radius, top_k)
 
         % while the found centers are less than top_k and the index is less
         % than the size of the array of found centers
-        while found < top_k && i <= length(row)
+        while found < top_k && i <= height(row)
 
             % find x and y location from a and b
             centers(found+1, 1) = row(i)*quantization_size;
@@ -84,7 +84,7 @@ function [centers] = detectCircles(im, edges, radius, top_k)
 
             % for each location found, set value to -1 to mark it as 
             % already found (so we can find the next top-scoring bin)
-            for index = 1 : length(row)
+            for index = 1 : height(row)
                 H(row(index), col(index)) = -1;
             end
         end
