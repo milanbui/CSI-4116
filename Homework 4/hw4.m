@@ -38,7 +38,7 @@ figure; imshow(im);
 viscircles(centers, radius * ones(size(centers, 1), 1));
 title(sprintf('circle radius: %d', radius));
 saveas(gcf, save_filename);
-%{
+
 %% Part II
 % This part is fairly easy and straightforward
 origImg = imread('fish.jpg');
@@ -52,4 +52,3 @@ figure;
 subplot(1,2,1); imshow(origImg); title('Original image')
 subplot(1,2,2); imshow(outputImg); title(sprintf('Quantized image (RGB) for k=%d', k));
 saveas(gcf, sprintf('fish_k%d.png', k)); 
-%}
