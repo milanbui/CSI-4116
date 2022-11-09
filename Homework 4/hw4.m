@@ -26,15 +26,16 @@ top_k = 4;
 % your image example
 % im = imread('my_image.jpg');
 % save_filename = 'my_image_circles.png';
-% radius = 65;   % you need to find the right radius for your image
-% top_k = 8;   % choose however many circles you want to detect
+% radius = 120;   % you need to find the right radius for your image
+% top_k = 6;   % choose however many circles you want to detect
 
 edges = detectEdges(im);
 centers = detectCircles(im, edges, radius, top_k);
 
 % Show the image and top k circles
 close all;  % close existing figures
-figure; imshow(im); 
+figure;
+imshow(im); 
 viscircles(centers, radius * ones(size(centers, 1), 1));
 title(sprintf('circle radius: %d', radius));
 saveas(gcf, save_filename);

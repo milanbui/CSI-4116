@@ -45,7 +45,6 @@ function [outputImg, meanColors, clusterIds] = quantizeRGB(origImg, k)
     clusterIds = kmeans(double(X), double(k));
     meanColors = zeros(k, 3);
     
-    % for each cluster
     for cluster = 1 : k
         % finds which pixels are in the current cluster
         clusterPixels = (clusterIds == cluster);
@@ -69,7 +68,7 @@ function [outputImg, meanColors, clusterIds] = quantizeRGB(origImg, k)
         % coordinates, so we need to convert from linear indices to xy
         [rows, cols] = ind2sub([numOfRows, numOfCols],find(clusterPixels));
     
-        % for each pixel in the cluster, change value to the mean
+        % for 
         for index = 1 : size(rows)
             outputImg(rows(index), cols(index), 1) = rMean; 
             outputImg(rows(index), cols(index), 2) = gMean; 
