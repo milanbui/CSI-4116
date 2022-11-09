@@ -1,15 +1,21 @@
-%% CSI 4116: Homework 4
-% Due: 11/11/2022, 11:59pm
+%--------------------------------------------------------------------------
+% NAME       : Milan Bui
+% INSTRUCTOR : Prof. Hwang
+% COURSE     : CSI 4116.01
+% DATE       : 11 November 2022
+% ASSIGNMENT : Homework 4
+% FILE       : hw4.m
+%--------------------------------------------------------------------------
 
 %% Part I
 % This outputs edges and shows a figure. You can use any radii of your
 % choice, including the ones I have provided below.
 
 % jupiter.jpg example
-% im = imread('jupiter.jpg');
-% save_filename = 'jupiter_circles.png';
-% radius = 110;   % radius = 110, 50, 30 work well for jupiter.jpg
-% top_k = 4;
+im = imread('jupiter.jpg');
+save_filename = 'jupiter_circles.png';
+radius = 110;   % radius = 110, 50, 30 work well for jupiter.jpg
+top_k = 4;
 
 % egg.jpg example
 % im = imread('egg.jpg');
@@ -18,13 +24,12 @@
 % top_k = 20;   % egg has many small circles. use large top_k
 
 % your image example
-im = imread('my_image.jpg');
-save_filename = 'my_image_circles.png';
-radius = 65;   % you need to find the right radius for your image
-top_k = 8;   % choose however many circles you want to detect
+% im = imread('my_image.jpg');
+% save_filename = 'my_image_circles.png';
+% radius = 65;   % you need to find the right radius for your image
+% top_k = 8;   % choose however many circles you want to detect
 
 edges = detectEdges(im);
-
 centers = detectCircles(im, edges, radius, top_k);
 
 % Show the image and top k circles
