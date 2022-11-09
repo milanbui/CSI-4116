@@ -19,7 +19,7 @@
 %              OUTPUTS:
 %              outputImg   - RGB image of class uint8, quantized
 %              meanColors  - kx3 array of k centers (one val for each
-%                            cluster and each clor channel)
+%                            cluster and each color channel)
 %              clustersIds - numpixelsx1 matrix (with numpixels =
 %                            numrows*numcolumns) that says to which cluster 
 %                            each pixel belongs
@@ -41,10 +41,6 @@ function [outputImg, meanColors, clusterIds] = quantizeRGB(origImg, k)
 % improved slightly if we let it run for longer by increasing MaxIter which
 % the default is 100.
 
-% Step 1 : Randomly initialize cluster centers
-numOfRows = length(rgb2gray(origImg));
-numOfCols = width(rgb2gray(origImg));
-numOfPixels = numOfRows * numOfCols;
 
 % reshape reshapes origImg into a numOfPixels x 3 matrix.
 % rows = samples, columns = features. Each column = color channel
@@ -52,10 +48,7 @@ X = reshape(origImg, [numOfPixels, 3]);
 
 clusterIds = kmeans(X, k);
 
-for cluster = 1 : k
-    for pixel = 1 : numOfPixels
-        
-    end
-end
+for
+
 
 end
