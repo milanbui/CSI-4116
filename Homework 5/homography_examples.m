@@ -1,3 +1,6 @@
+img1 = imread('keble1.png');
+img2 = imread('keble2.png');
+
 %% Problem 1 and Problem 3c: Test estimate_homography for keble images
 % Use these correspondences for HW5.
 % keble1
@@ -23,25 +26,25 @@ H = estimate_homography(PA, PB);
 %     0.0008    0.0095   -0.0788
 %     0.0000    0.0000    0.0085
 
-% %% Problem 3d: Test apply_homography
-% % transform all PA to PA_transformed using the estimated homography
-% PA_transformed = [];
-% for i=1:size(PA, 1)
-%     p1 = PA(i,:);
-%     p2 = apply_homography(p1, H);
-%     PA_transformed = [PA_transformed; p2];
-% end
-% 
-% % If our homography H is accurate, then PA_transformed should be similar to
-% % PB which are the true correspondences. Check this yourself by outputting
-% % the values or by plotting below.
-% figure;
-% subplot(1,2,1); hold on; 
-% imshow(img1); plot(PA(:,1), PA(:,2), 'g.', 'MarkerSize', 20);
-% title('PA shown in Image 1');
-% subplot(1,2,2); hold on; 
-% imshow(img2); plot(PA_transformed(:,1), PA_transformed(:,2), 'r.', 'MarkerSize', 20);
-% title('PA transformed and shown in Image 2');
+%% Problem 3d: Test apply_homography
+% transform all PA to PA_transformed using the estimated homography
+PA_transformed = [];
+for i=1:size(PA, 1)
+    p1 = PA(i,:);
+    p2 = apply_homography(p1, H);
+    PA_transformed = [PA_transformed; p2];
+end
+
+% If our homography H is accurate, then PA_transformed should be similar to
+% PB which are the true correspondences. Check this yourself by outputting
+% the values or by plotting below.
+figure;
+subplot(1,2,1); hold on; 
+imshow(img1); plot(PA(:,1), PA(:,2), 'g.', 'MarkerSize', 20);
+title('PA shown in Image 1');
+subplot(1,2,2); hold on; 
+imshow(img2); plot(PA_transformed(:,1), PA_transformed(:,2), 'r.', 'MarkerSize', 20);
+title('PA transformed and shown in Image 2');
 
 %% Problem 4: Correspondences for uttower images
 % uttower1
