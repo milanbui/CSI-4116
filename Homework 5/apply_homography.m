@@ -16,16 +16,16 @@
 %              p2 - 1x2 vector (ie. [x,y]) in image 2 space. In other words
 %                   p1 in image 1 should transform to p2 in image 2
 %--------------------------------------------------------------------------
-
 function [p2] = apply_homography(p1, H)
-    newP1 = [p1, 1];
+
+    newP1 = [p1, 1];  % add 1 to vectr to perform operation [x,y,1]
 
     % perform p' = H*p
     p2_homogeneous = H*newP1';
 
-    % Convert from homogeneous to image coordinates
-    x = p2_homogeneous(1, 1) / p2_homogeneous(3, 1);
-    y = p2_homogeneous(2, 1) / p2_homogeneous(3, 1);
+    % Convert from homogeneous to image coordinates 
+    x = p2_homogeneous(1, 1) / p2_homogeneous(3, 1);  % x = x' / w
+    y = p2_homogeneous(2, 1) / p2_homogeneous(3, 1);  % y = y' / w
 
     p2 = [x,y];
 

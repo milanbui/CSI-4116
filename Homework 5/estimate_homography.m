@@ -17,20 +17,20 @@
 %              OUTPUTS:
 %              H - 3x3 matrix. homography between points of images
 %--------------------------------------------------------------------------
-
 function H = estimate_homography(PA, PB) 
 
-    % Set up system of equations A as shown in slides
     numOfPoints = height(PA);
-    A = zeros(2*numOfPoints, 9);
-    
+    A = zeros(2*numOfPoints, 9); % each A per point has 2 rows and 9 colums
     i = 1;
     row = 1;
 
+    % for each matching point, set up A 
     while i <= numOfPoints && row <= height(A)
         currentA = [-PA(i,1), -PA(i,2), -1, 0, 0, 0, PA(i,1)*PB(i,1), PA(i,2)*PB(i,1), PB(i,1);...
                     0, 0, 0, -PA(i,1), -PA(i,2), -1, PA(i,1)*PB(i,2), PA(i,2)*PB(i,2), PB(i,2)];
         A(row:row+1, :) = currentA;
+
+        % iterates
         row = row + 2;
         i = i+1;
     end
@@ -39,7 +39,5 @@ function H = estimate_homography(PA, PB)
     [~,~,V] = svd(A);
     h = V(:, end);
     H = reshape(h, 3, 3)';
-
-
 
 end

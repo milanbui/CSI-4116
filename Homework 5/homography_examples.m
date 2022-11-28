@@ -7,6 +7,7 @@
 % FILE       : homography_examples.m
 %--------------------------------------------------------------------------
 
+% Initialize image variables for Parts 1-3
 img1 = imread('keble1.png');
 img2 = imread('keble2.png');
 
@@ -70,7 +71,6 @@ PA = [481, 310; 328, 510; 106, 507; 108, 619; 56, 176; 129, 483; 526, 537; 375, 
 PB = [928, 331; 782, 540; 569, 545; 578, 652; 505, 232; 585, 519; 998, 567; 816, 322];
 
 canvas = mosaic(img1, img2, PA, PB);
-figure;
-imshow(canvas);
-saveas(gcf, 'uttower_mosaic.png');
+imwrite(canvas, 'uttower_mosaic.png');
+
 
