@@ -5,9 +5,10 @@
 % DATE       : 30 November 2022
 % ASSIGNMENT : Homework 5
 % FILE       : homography_examples.m
+% DECRIPTION : for testing estimate_homography and apply_homography
 %--------------------------------------------------------------------------
 
-% Initialize image variables for Parts 1-3
+% Initialize image variables
 img1 = imread('keble1.png');
 img2 = imread('keble2.png');
 
@@ -56,21 +57,10 @@ subplot(1,2,2); hold on;
 imshow(img2); plot(PA_transformed(:,1), PA_transformed(:,2), 'r.', 'MarkerSize', 20);
 title('PA transformed and shown in Image 2');
 
-%% Problem 3: Applying mosaic to keble images
-canvas = mosaic(img1, img2, PA, PB);
-imwrite(canvas, 'keble_mosaic.png');
-
-
 %% Problem 4: Correspondences for uttower images
-img1 = imread('uttower1.jpeg');
-img2 = imread('uttower2.jpeg');
 
-% uttower1
-PA = [481, 310; 328, 510; 106, 507; 108, 619; 56, 176; 129, 483; 526, 537; 375, 293];
-% % uttower2
-PB = [928, 331; 782, 540; 569, 545; 578, 652; 505, 232; 585, 519; 998, 567; 816, 322];
-
-canvas = mosaic(img1, img2, PA, PB);
-imwrite(canvas, 'uttower_mosaic.png');
-
+% % uttower1
+% PA = [481, 310; 328, 510; 106, 507; 108, 619; 56, 176; 129, 483; 526, 537; 375, 293];
+% % % uttower2
+% PB = [928, 331; 782, 540; 569, 545; 578, 652; 505, 232; 585, 519; 998, 567; 816, 322];
 
